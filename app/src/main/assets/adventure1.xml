@@ -67,11 +67,24 @@
 
     <scenerio>
         <textBox>
+            The building is dark except for small amounts of light protruding through cracks and holes
+            around the structure. A glint of light catches your eye in the center of the room. Do you
+            want to investigate?
+        </textBox>
+        <yes>You discover an old book that has a metal latch sealing it. Time to book it!</yes>
+        <no>The guards make their way back to the room and discover you while taking too long.</no>
+        <locationIdX>6</locationIdX>
+        <locationIdY>4</locationIdY>
+    </scenerio>
 
+    <scenerio>
+        <textBox>
+          You made it back home unscathed. No what to do with this book?  This is unfortunately
+            a question for another day!
         </textBox>
         <yes>0</yes>
         <no>0</no>
-        <locationIdX>6</locationIdX>
+        <locationIdX>7</locationIdX>
         <locationIdY>4</locationIdY>
     </scenerio>
 
