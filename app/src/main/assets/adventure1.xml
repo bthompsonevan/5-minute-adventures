@@ -13,7 +13,7 @@
 
     <scenerio>
         <textBox>
-            Stone ruins lay before you that seem to be of a small village. Nature has
+            Stone ruins lay before you. The ruins seem to be a small village. Nature has
             taken the area back over which makes traveling difficult. You are only able to move north.
         </textBox>
         <yes>0</yes>
@@ -24,11 +24,34 @@
 
     <scenerio>
         <textBox>
-
+            You see an empty archway, to your west, that leads into what seems to be an old stone house or
+            at least what is left of it. The path also continues North.
         </textBox>
         <yes>0</yes>
         <no>0</no>
-        <locationId>2</locationId>
+        <locationIdX>5</locationIdX>
+        <locationIdY>2</locationIdY>
+    </scenerio>
+
+    <scenerio>
+        <textBox>
+            When you enter the archway the room is framed as a rough ten foot square. Disturbed
+            leaves and dirt in the corner catch your eye. Do you want to investigate?
+        </textBox>
+        <yes>While investigating the ground gives way and you fall into a hole never to be found again.</yes>
+        <no>Head back east to the pathway.</no>
+        <locationIdX>4</locationIdX>
+        <locationIdY>2</locationIdY>
+    </scenerio>
+
+    <scenerio>
+        <textBox>
+
+        </textBox>
+        <yes></yes>
+        <no></no>
+        <locationIdX>5</locationIdX>
+        <locationIdY>3</locationIdY>
     </scenerio>
 
 </adventureData>
