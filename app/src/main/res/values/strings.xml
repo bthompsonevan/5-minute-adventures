@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">5-minute-adventures</string>
+    <string name="questTextBox" />
+    <string name="yesButton">Yes</string>
+    <string name="noButton">No</string>
+    <string name="directionLabel">Please Choose Direction:</string>
+    <string name="moveButton">Move</string>
+
+    <string-array name="directionOptions">
+        <item>North</item>
+        <item>South</item>
+        <item>East</item>
+        <item>West</item>
+    </string-array>
 </resources>
