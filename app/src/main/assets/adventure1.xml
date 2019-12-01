@@ -46,12 +46,33 @@
 
     <scenerio>
         <textBox>
-
+            On the pathway you hear a pair of people heading towards you. They did not notice you.
+            Do you want to hide behind some rubble?
         </textBox>
-        <yes></yes>
-        <no></no>
+        <yes>Phew!  They passed.  It looks like they were a military patrol. You can still head north.</yes>
+        <no>Uh Oh!  You were spotted and taken into custody for trespassing.</no>
         <locationIdX>5</locationIdX>
         <locationIdY>3</locationIdY>
+    </scenerio>
+
+    <scenerio>
+        <textBox>
+            The path rounds a corner to the east and leads into a intact building.
+        </textBox>
+        <yes>0</yes>
+        <no>0</no>
+        <locationIdX>5</locationIdX>
+        <locationIdY>4</locationIdY>
+    </scenerio>
+
+    <scenerio>
+        <textBox>
+
+        </textBox>
+        <yes>0</yes>
+        <no>0</no>
+        <locationIdX>6</locationIdX>
+        <locationIdY>4</locationIdY>
     </scenerio>
 
 </adventureData>
