@@ -5,6 +5,9 @@
     <string name="noButton">No</string>
     <string name="directionLabel">Please Choose Direction:</string>
     <string name="moveButton">Move</string>
+    <string name="choiceTextBox" />
+    <string name="newGameButton">New Game</string>
+    <string name="returnButton">Go Back</string>
 
     <string-array name="directionOptions">
         <item>North</item>
