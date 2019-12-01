@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <adventureData>
+    <scenerio>
 
+    </scenerio>
+        <textBox>
+            Welcome to the Mysterious Ruins. Do you want to play?
+        </textBox>
+        <yes>Great!  Lets move along.</yes>
+        <no>Then why did you open the app??</no>
+        <locationId>0</locationId>
+    <scenerio>
+
+    </scenerio>
 
 </adventureData>
