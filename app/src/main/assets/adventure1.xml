@@ -2,16 +2,33 @@
 
 <adventureData>
     <scenerio>
-
-    </scenerio>
         <textBox>
             Welcome to the Mysterious Ruins. Do you want to play?
         </textBox>
         <yes>Great!  Lets move along.</yes>
         <no>Then why did you open the app??</no>
-        <locationId>0</locationId>
-    <scenerio>
+        <locationIdX>5</locationIdX>
+        <locationIdY>0</locationIdY>
+    </scenerio>
 
+    <scenerio>
+        <textBox>
+            Stone ruins lay before you that seem to be of a small village. Nature has
+            taken the area back over which makes traveling difficult. You are only able to move north.
+        </textBox>
+        <yes>0</yes>
+        <no>0</no>
+        <locationIdX>5</locationIdX>
+        <locationIdY>1</locationIdY>
+    </scenerio>
+
+    <scenerio>
+        <textBox>
+
+        </textBox>
+        <yes>0</yes>
+        <no>0</no>
+        <locationId>2</locationId>
     </scenerio>
 
 </adventureData>
