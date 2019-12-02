@@ -3,97 +3,64 @@ package com.example.a5_minute_adventures;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.*;
 
+import java.util.ArrayList;
+
 
 public class ParseHandler extends DefaultHandler {
     private AdventureItems adventureItems;
     private AdventureItem item;
-    private boolean isCity = false;
-    private boolean isDate = false;
-    private boolean isDescription = false;
-    private boolean isMorningLow = false;
-    private boolean isDaytimeHigh = false;
-    private boolean isDayPrecip = false;
-    private boolean isNightPrecip = false;
 
-    public WeatherItems getItems() {
-        return weatherItems;
-    }
+    //setting constants for elements in adventure xml files
+    private final static String TEXT_BOX = "textBox";
+    private final static String YES = "yes";
+    private final static String NO = "no";
+    private final static String LOCATIONIDX = "locationIdX";
+    private final static String LOCATIONIDY = "locationIdY";
+
+    public AdventureItems getItems() {return adventureItems;}
+
 
     @Override
     public void startDocument() throws SAXException {
-        weatherItems = new WeatherItems();
-        item = new WeatherItem();
+        adventureItems = new AdventureItems();
+
     }
 
     @Override
     public void startElement(String namespaceURI, String localName,
                              String qName, Attributes atts) throws SAXException {
 
-        if (qName.equals(CITY)) {
-            isCity = true;;
+        if (qName.equals(TEXT_BOX)) {
+            item = new AdventureItem();
+            item.setTextBox(atts.getValue(0));
         }
-        else if (qName.equals(FORECAST)) {
-            item = new WeatherItem();
+        else if (qName.equals(YES)) {
+            item = new AdventureItem();
+            item.setYes(atts.getValue(0));
         }
-        else if (qName.equals(DATE)) {
-            isDate = true;
+        else if (qName.equals(NO)) {
+            item = new AdventureItem();
+            item.setNo(atts.getValue(0));
         }
-        else if (qName.equals(DESCRIPTION)) {
-            isDescription = true;
+        else if (qName.equals(LOCATIONIDX)) {
+            item = new AdventureItem();
+            item.setLocationIdX(Integer.parseInt(atts.getValue(0)));
         }
-        else if (qName.equals(MORNING_LOW)) {
-            isMorningLow = true;
+        else if (qName.equals(LOCATIONIDY)) {
+            item = new AdventureItem();
+            item.setLocationIdY(Integer.parseInt(atts.getValue(0)));
         }
-        else if (qName.equals(DAYTIME_HIGH)) {
-            isDaytimeHigh = true;
-        }
-        else if (qName.equals(NIGHT_PRECIP)) {
-            isNightPrecip = true;
-        }else if (qName.equals(DAY_PRECIP)) {
-            isDayPrecip = true;
-        }
+
+
     }
 
     @Override
     public void endElement(String namespaceURI, String localName,
                            String qName) throws SAXException
     {
-        if (qName.equals(FORECAST)) {
-            weatherItems.add(item);
+        if (qName.equals(TEXT_BOX)) {
+            adventureItems.add(item);
         }
     }
 
-    @Override
-    public void characters(char ch[], int start, int length)
-    {
-        String s = new String(ch, start, length);
-        if (isCity) {
-            weatherItems.setCity(s);
-            isCity = false;
-        }
-        else if (isDate) {
-            item.setForecastDate(s);
-            isDate = false;
-        }
-        else if (isDescription) {
-            item.setDescription(s);
-            isDescription = false;
-        }
-        else if (isMorningLow) {
-            item.setLowTemp(s);
-            isMorningLow = false;
-        }
-        else if (isDaytimeHigh) {
-            item.setHighTemp(s);
-            isDaytimeHigh = false;
-        }
-        else if (isNightPrecip) {
-            item.setNightPrecip(s);
-            isNightPrecip = false;
-        }
-        else if (isDayPrecip) {
-            item.setDayPrecip(s);
-            isDayPrecip = false;
-        }
-    }
 }
