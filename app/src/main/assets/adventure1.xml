@@ -1,91 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <adventureData>
     <scenario>
-        <textBox>
-            Welcome to the Mysterious Ruins. Do you want to play?
-        </textBox>
+        <textBox>Welcome to the Mysterious Ruins. Do you want to play?</textBox>
         <yes>Great!  Lets move along.</yes>
         <no>Then why did you open the app??</no>
         <locationIdX>5</locationIdX>
         <locationIdY>0</locationIdY>
     </scenario>
-
     <scenario>
-        <textBox>
-            Stone ruins lay before you. The ruins seem to be a small village. Nature has
-            taken the area back over which makes traveling difficult. You are only able to move north.
-        </textBox>
+        <textBox>Stone ruins lay before you. The ruins seem to be a small village. Nature has taken the area back over which makes traveling difficult. You are only able to move north.</textBox>
         <yes>0</yes>
         <no>0</no>
         <locationIdX>5</locationIdX>
         <locationIdY>1</locationIdY>
     </scenario>
-
     <scenario>
-        <textBox>
-            You see an empty archway, to your west, that leads into what seems to be an old stone house or
-            at least what is left of it. The path also continues North.
-        </textBox>
+        <textBox>You see an empty archway, to your west, that leads into what seems to be an old stone house or at least what is left of it. The path also continues North.</textBox>
         <yes>0</yes>
         <no>0</no>
         <locationIdX>5</locationIdX>
         <locationIdY>2</locationIdY>
     </scenario>
-
     <scenario>
-        <textBox>
-            When you enter the archway the room is framed as a rough ten foot square. Disturbed
-            leaves and dirt in the corner catch your eye. Do you want to investigate?
-        </textBox>
+        <textBox>When you enter the archway the room is framed as a rough ten foot square. Disturbed leaves and dirt in the corner catch your eye. Do you want to investigate?</textBox>
         <yes>While investigating the ground gives way and you fall into a hole never to be found again.</yes>
         <no>Head back east to the pathway.</no>
         <locationIdX>4</locationIdX>
         <locationIdY>2</locationIdY>
     </scenario>
-
     <scenario>
-        <textBox>
-            On the pathway you hear a pair of people heading towards you. They did not notice you.
-            Do you want to hide behind some rubble?
-        </textBox>
+        <textBox>On the pathway you hear a pair of people heading towards you. They did not notice you.Do you want to hide behind some rubble?</textBox>
         <yes>Phew!  They passed.  It looks like they were a military patrol. You can still head north.</yes>
         <no>Uh Oh!  You were spotted and taken into custody for trespassing.</no>
         <locationIdX>5</locationIdX>
         <locationIdY>3</locationIdY>
     </scenario>
-
     <scenario>
-        <textBox>
-            The path rounds a corner to the east and leads into a intact building.
-        </textBox>
+        <textBox>The path rounds a corner to the east and leads into a intact building.</textBox>
         <yes>0</yes>
         <no>0</no>
         <locationIdX>5</locationIdX>
         <locationIdY>4</locationIdY>
     </scenario>
-
     <scenario>
-        <textBox>
-            The building is dark except for small amounts of light protruding through cracks and holes
-            around the structure. A glint of light catches your eye in the center of the room. Do you
-            want to investigate?
-        </textBox>
+        <textBox>The building is dark except for small amounts of light protruding through cracks and holes around the structure. A glint of light catches your eye in the center of the room. Do you want to investigate?</textBox>
         <yes>You discover an old book that has a metal latch sealing it. Time to book it!</yes>
         <no>The guards make their way back to the room and discover you while taking too long.</no>
         <locationIdX>6</locationIdX>
         <locationIdY>4</locationIdY>
     </scenario>
-
     <scenario>
-        <textBox>
-          You made it back home unscathed. No what to do with this book?  This is unfortunately
-            a question for another day!
-        </textBox>
+        <textBox>You made it back home unscathed. No what to do with this book?  This is unfortunately a question for another day!</textBox>
         <yes>0</yes>
         <no>0</no>
         <locationIdX>7</locationIdX>
         <locationIdY>4</locationIdY>
     </scenario>
-
 </adventureData>

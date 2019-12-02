@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity
 
         //USE THIS FORMAT WHEN PULLING DATA OUT OF THE ARRAYLIST
         // questTextBox.setText(adventureItems.get(0).getTextBox());
-        questTextBox.setText("");
+        questTextBox.setText(adventureItems.get(0).getTextBox());
 
     }
 

@@ -97,7 +97,7 @@ public class ParseHandler extends DefaultHandler {
     public void endElement(String namespaceURI, String localName,
                            String qName) throws SAXException
     {
-        if (qName.equals(TEXT_BOX)) {
+        if (qName.equals(SCENARIO)) {
             adventureItems.add(item);
         }
     }
