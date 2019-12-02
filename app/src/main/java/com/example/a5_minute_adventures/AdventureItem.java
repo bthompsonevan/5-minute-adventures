@@ -9,8 +9,8 @@ public class AdventureItem {
     private Integer locationIdY = null;
 
     //Getters / Setters for textBox
-    public void setTextBox(String text){
-        this.textBox = text;
+    public void setTextBox(String textBox){
+        this.textBox = textBox;
     }
     public String getTextBox(){
         return textBox;

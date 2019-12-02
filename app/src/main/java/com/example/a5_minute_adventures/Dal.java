@@ -13,6 +13,11 @@ public class Dal {
 
     private Context context = null;
 
+    public Dal(Context c)
+    {
+        context = c;
+    }
+
     public ArrayList<AdventureItem> parseXmlFile(String fileName) {
         try {
             // get the XML reader
@@ -32,7 +37,7 @@ public class Dal {
             return items;
         }
         catch (Exception e) {
-            Log.e("Advtre item parse error", e.toString());
+            Log.e("item parse error", e.toString());
             return null;
         }
     }
