@@ -3,11 +3,14 @@ package com.example.a5_minute_adventures;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 public class ParseHandler extends DefaultHandler {
-    private AdventureItems adventureItems;
+    //Will hold the parsed data
+    private ArrayList<AdventureItem> adventureItems;
+
     private AdventureItem item;
 
     //setting constants for elements in adventure xml files
@@ -17,12 +20,22 @@ public class ParseHandler extends DefaultHandler {
     private final static String LOCATIONIDX = "locationIdX";
     private final static String LOCATIONIDY = "locationIdY";
 
-    public AdventureItems getItems() {return adventureItems;}
+    //setting up boolean variables for characters method
+    private boolean isTextBox = false;
+    private boolean isYes = false;
+    private boolean isNo = false;
+    private boolean isLocationIdX = false;
+    private boolean isLocationIdY = false;
+
+
+    public ArrayList<AdventureItem> getItems(){
+        return adventureItems;
+    }
 
 
     @Override
     public void startDocument() throws SAXException {
-        adventureItems = new AdventureItems();
+        adventureItems = new ArrayList<AdventureItem>();
 
     }
 
@@ -50,8 +63,29 @@ public class ParseHandler extends DefaultHandler {
             item = new AdventureItem();
             item.setLocationIdY(Integer.parseInt(atts.getValue(0)));
         }
+    }
 
+    @Override
+    public void characters(char ch[], int start , int length) {
+        //print out the attributes' value
+        String valueString = new String(ch, start, length);
 
+        if (isTextBox) {
+            item.setTextBox(valueString);
+            isTextBox = false;
+        } else if (isYes) {
+            item.setYes(valueString);
+            isYes = false;
+        }else if (isNo) {
+            item.setNo(valueString);
+            isNo = false;
+        }else if (isLocationIdX) {
+            item.setLocationIdX(Integer.parseInt(valueString));
+            isLocationIdX = false;
+        }else if (isLocationIdY) {
+            item.setLocationIdY(Integer.parseInt(valueString));
+            isLocationIdY = false;
+        }
     }
 
     @Override
