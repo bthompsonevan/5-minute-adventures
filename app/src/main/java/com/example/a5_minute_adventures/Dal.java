@@ -37,7 +37,7 @@ public class Dal {
             return items;
         }
         catch (Exception e) {
-            Log.e("Advtre item parse error", e.toString());
+            Log.e("item parse error", e.toString());
             return null;
         }
     }

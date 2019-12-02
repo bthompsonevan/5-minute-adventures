@@ -14,6 +14,7 @@ public class ParseHandler extends DefaultHandler {
     private AdventureItem item;
 
     //setting constants for elements in adventure xml files
+    private final static String SCENARIO = "scenario";
     private final static String TEXT_BOX = "textBox";
     private final static String YES = "yes";
     private final static String NO = "no";
