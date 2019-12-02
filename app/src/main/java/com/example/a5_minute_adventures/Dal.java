@@ -13,6 +13,11 @@ public class Dal {
 
     private Context context = null;
 
+    public Dal(Context c)
+    {
+        context = c;
+    }
+
     public ArrayList<AdventureItem> parseXmlFile(String fileName) {
         try {
             // get the XML reader
