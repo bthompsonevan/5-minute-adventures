@@ -29,6 +29,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginBottom="43dp"
         android:text="@string/yesButton"
+        android:onClick="onClick"
         app:layout_constraintBottom_toTopOf="@+id/directionLabel"
         app:layout_constraintEnd_toStartOf="@+id/noButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:text="@string/noButton"
+        android:onClick="onClick"
         app:layout_constraintBaseline_toBaselineOf="@+id/yesButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/yesButton" />
@@ -77,6 +79,7 @@
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="85dp"
         android:text="@string/moveButton"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/directionLabel"
         app:layout_constraintTop_toBottomOf="@+id/directionSpinner" />
