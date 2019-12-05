@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity
     public static final String SAVED_VALUES = "savedValues";
     public static final String TEXT_BOX = "textBox";
 
+    //variables to hold current values of the game state
+    public String currentTextBox;
+
     //variables to hold information from the widgets
     TextView questTextBox;
     Button yesButton;
@@ -44,13 +47,10 @@ public class MainActivity extends AppCompatActivity
     Button moveButton;
     Spinner directionSpinner;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        savedValues = getSharedPreferences(SAVED_VALUES,MODE_PRIVATE);
 
         questTextBox = findViewById(R.id.questTextBox);
         yesButton = findViewById(R.id.yesButton);
@@ -58,14 +58,16 @@ public class MainActivity extends AppCompatActivity
         moveButton = findViewById(R.id.moveButton);
         directionSpinner = findViewById(R.id.directionSpinner);
 
-
         Dal dal = new Dal(this);
-
         adventureItems = dal.parseXmlFile(ADVENTURE_1);
 
         //USE THIS FORMAT WHEN PULLING DATA OUT OF THE ARRAY LIST
         // questTextBox.setText(adventureItems.get(0).getTextBox());
-        questTextBox.setText(adventureItems.get(0).getTextBox());
+
+        currentTextBox = adventureItems.get(0).getTextBox();
+        questTextBox.setText(currentTextBox);
+
+        savedValues = getSharedPreferences(SAVED_VALUES,MODE_PRIVATE);
 
     }
 
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity
     public void onPause(){
         // Saving values to be restored
         Editor editor = savedValues.edit();
-        editor.putString(TEXT_BOX, questTextBox.getText().toString());
+        editor.putString(TEXT_BOX, currentTextBox);
         editor.commit();
         super.onPause();
     }
@@ -81,8 +83,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onResume(){
         super.onResume();
+        //Getting savedValues from onPause
+        currentTextBox = savedValues.getString(TEXT_BOX,"");
 
-        
+        //Putting value back into app
+        questTextBox.setText(currentTextBox);
     }
 
     @Override
@@ -98,11 +103,13 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.noButton:
-
+                currentTextBox = "No button pressed";
+                questTextBox.setText(currentTextBox);
                 break;
 
             case R.id.moveButton:
-                questTextBox.setText("Test Screen for saved instance state");
+                currentTextBox = "Move button pressed";
+                questTextBox.setText(currentTextBox);
                 break;
         }
 
