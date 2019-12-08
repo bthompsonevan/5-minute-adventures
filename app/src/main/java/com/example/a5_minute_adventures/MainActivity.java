@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity
                         ycoord -= 1;
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
+                        currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
                         questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }
                     else{
@@ -173,6 +174,7 @@ public class MainActivity extends AppCompatActivity
                         xcoord += 1;
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
+                        currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
                         questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }else{
                         Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
@@ -184,6 +186,7 @@ public class MainActivity extends AppCompatActivity
                         xcoord -= 1;
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
+                        currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
                         questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }else{
                         Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
@@ -238,7 +241,7 @@ public class MainActivity extends AppCompatActivity
 
     public boolean CheckValidMove(Integer xcoord, Integer ycoord) {
         //Handling the area outside the possible move as a catch all
-        if (xcoord >= 8 || xcoord <= 3 || ycoord < 0  || ycoord >= 5){
+        if (xcoord >= 8 || xcoord <= 3 || ycoord <= -1  || ycoord >= 5){
             return false;
         }
         //Handling areas that contain a mix of possible and not possible moves
@@ -261,10 +264,10 @@ public class MainActivity extends AppCompatActivity
         if (xcoord == 5 && ycoord == 1){
             return 1;
         }
-        if (xcoord == 4 && ycoord == 2){
+        if (xcoord == 5 && ycoord == 2){
             return 2;
         }
-        if (xcoord == 5 && ycoord == 2){
+        if (xcoord == 4 && ycoord == 2){
             return 3;
         }
         if (xcoord == 5 && ycoord == 3){
