@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity
     public static final String YES_DATA = "yes";
     public static final String NO_DATA = "no";
 
+    //Game Text Constants
+    public static final String NO_MOVE_MESSAGE = "The nature growth does not allow you to move in that direction";
+
     //Variables to hold the current area data
     private String yes = "test";
 
@@ -121,31 +124,49 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.moveButton:
-
                 if (selectedItem == "North"){
-                    ycoord += 1;
-                    Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
-                    toast.show();
+                    if(CheckValidMove(xcoord,ycoord + 1)){
+                        ycoord += 1;
+                        Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
+                        toast.show();
+                    }else{
+                        Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
                 }
                 if (selectedItem == "South") {
-                    ycoord -= 1;
-                    Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
-                    toast.show();
+                    if(CheckValidMove(xcoord, ycoord - 1)){
+                        ycoord -= 1;
+                        Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                    else{
+                        Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
                 }
                 if (selectedItem == "East") {
-                    xcoord += 1;
-                    Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
-                    toast.show();
+                    if(CheckValidMove(xcoord +1, ycoord)){
+                        xcoord += 1;
+                        Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
+                        toast.show();
+                    }else{
+                        Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
                 }
                 if (selectedItem == "West") {
-                    xcoord -= 1;
-                    Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
-                    toast.show();
+                    if(CheckValidMove(xcoord -1, ycoord)){
+                        xcoord -= 1;
+                        Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
+                        toast.show();
+                    }else{
+                        Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
                 }
-
             }
         }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -162,7 +183,6 @@ public class MainActivity extends AppCompatActivity
                 case 3:
                     selectedItem = "West";
             }
-
     }
 
     @Override
@@ -175,7 +195,29 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public Integer CheckValidMove(Integer xcoord, Integer ycoord){
+    public boolean CheckValidMove(Integer xcoord, Integer ycoord) {
+        //Handling the area outside the possible move as a catch all
+        if (xcoord >= 7 || xcoord <= 3 || ycoord <= 0 || ycoord >= 5){
+            return false;
+        }
+        //Handling areas that contain a mix of possible and not possible moves
+        if(xcoord == 4 && ycoord == 1 || xcoord == 6 && ycoord == 1 ||
+           xcoord == 6 && ycoord == 2 || xcoord == 4 && ycoord == 3 ||
+           xcoord == 6 && ycoord == 3 || xcoord == 4 && ycoord == 4){
+
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public Integer GetAdventureItemBasedOnCoord(Integer xcoord, Integer ycoord){
         return null;
+    }
+
+    //Use for testing values with a toast message
+    public void TestToaster(String message){
+        Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+        toast.show();
     }
 }
