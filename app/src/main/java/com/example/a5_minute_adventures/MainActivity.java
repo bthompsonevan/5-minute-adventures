@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity
        //currentTextBox = savedValues.getString(TEXT_BOX,"");
 
         //Putting value back into app
-        questTextBox.setText(currentTextBox);
+        questTextBox.setText(savedValues.getString(TEXT_BOX,""));
     }
 
     @Override
