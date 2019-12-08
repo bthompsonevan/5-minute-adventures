@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity
 
         currentTextBox = adventureItems.get(GetAdventureItemBasedOnCoord(xcoord,ycoord)).getTextBox();
         questTextBox.setText(currentTextBox);
-        
+
         savedValues = getSharedPreferences(SAVED_VALUES,MODE_PRIVATE);
 
     }
