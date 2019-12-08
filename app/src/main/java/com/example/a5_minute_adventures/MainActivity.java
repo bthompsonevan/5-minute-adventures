@@ -2,6 +2,7 @@ package com.example.a5_minute_adventures;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity
 
     //Constants for intent data passing
     public static final String PASSED_DATA = "passedData";
+    public static final String PASSED_X = "passedX";
+    public static final String PASSED_Y = "passedY";
+    public static final Integer REQUEST_CODE = 1;
 
     //Game Text Constants
     public static final String NO_MOVE_MESSAGE = "The nature growth does not allow you to move in that direction";
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity
 
     String selectedItem;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +89,8 @@ public class MainActivity extends AppCompatActivity
         questTextBox.setText(currentTextBox);
 
         savedValues = getSharedPreferences(SAVED_VALUES,MODE_PRIVATE);
+
+
 
     }
 
@@ -115,12 +122,16 @@ public class MainActivity extends AppCompatActivity
         //variable to hold the integer of the array location
         Integer currentLocation = null;
         String passedData = null;
+        Integer passedX = xcoord;
+        Integer passedY = ycoord;
 
         switch(v.getId()){
             case R.id.yesButton:
                 currentLocation = GetAdventureItemBasedOnCoord(xcoord,ycoord);
                 passedData = adventureItems.get(currentLocation).getYes();
                 intent.putExtra(PASSED_DATA, passedData);
+                intent.putExtra(PASSED_X, passedX);
+                intent.putExtra(PASSED_Y, passedY);
                 startActivity(intent);
                 break;
 
@@ -128,6 +139,8 @@ public class MainActivity extends AppCompatActivity
                  currentLocation = GetAdventureItemBasedOnCoord(xcoord,ycoord);
                  passedData = adventureItems.get(currentLocation).getNo();
                 intent.putExtra(PASSED_DATA, passedData);
+                intent.putExtra(PASSED_X, xcoord);
+                intent.putExtra(PASSED_Y, ycoord);
                 startActivity(intent);
                 break;
 
@@ -204,6 +217,21 @@ public class MainActivity extends AppCompatActivity
         //do not need to implement
     }
 
+    //Setting the coordinates from the intent return
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                xcoord = data.getIntExtra(PASSED_X,0);
+                ycoord = data.getIntExtra(PASSED_Y,0);
+                Integer resetLocation =  GetAdventureItemBasedOnCoord(xcoord,ycoord);
+                questTextBox.setText(adventureItems.get(resetLocation).toString());
+            }
+        }
+    }
+
     //for use with future refactoring?
     public void UpdatePlayerPosition(Spinner directionSpinner, Integer xcoord, Integer ycoord){
 
@@ -211,7 +239,7 @@ public class MainActivity extends AppCompatActivity
 
     public boolean CheckValidMove(Integer xcoord, Integer ycoord) {
         //Handling the area outside the possible move as a catch all
-        if (xcoord >= 7 || xcoord <= 3 || ycoord <= 0 || ycoord >= 5){
+        if (xcoord >= 7 || xcoord <= 3 || ycoord <= 0  || ycoord >= 5){
             return false;
         }
         //Handling areas that contain a mix of possible and not possible moves
