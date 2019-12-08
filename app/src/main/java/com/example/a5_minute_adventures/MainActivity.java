@@ -83,15 +83,12 @@ public class MainActivity extends AppCompatActivity
 
         //Getting game start values
         xcoord = 5;
-        ycoord = 1;
+        ycoord = 0;
 
         currentTextBox = adventureItems.get(GetAdventureItemBasedOnCoord(xcoord,ycoord)).getTextBox();
         questTextBox.setText(currentTextBox);
 
         savedValues = getSharedPreferences(SAVED_VALUES,MODE_PRIVATE);
-
-
-
     }
 
     @Override
@@ -107,7 +104,9 @@ public class MainActivity extends AppCompatActivity
     public void onResume(){
         super.onResume();
         //Getting savedValues from onPause
-        currentTextBox = savedValues.getString(TEXT_BOX,"");
+
+        //This code was causing the first text box to not display
+       //currentTextBox = savedValues.getString(TEXT_BOX,"");
 
         //Putting value back into app
         questTextBox.setText(currentTextBox);
@@ -239,13 +238,16 @@ public class MainActivity extends AppCompatActivity
 
     public boolean CheckValidMove(Integer xcoord, Integer ycoord) {
         //Handling the area outside the possible move as a catch all
-        if (xcoord >= 7 || xcoord <= 3 || ycoord <= 0  || ycoord >= 5){
+        if (xcoord >= 8 || xcoord <= 3 || ycoord < 0  || ycoord >= 5){
             return false;
         }
         //Handling areas that contain a mix of possible and not possible moves
-        if(xcoord == 4 && ycoord == 1 || xcoord == 6 && ycoord == 1 ||
+        if(xcoord == 4 && ycoord == 0 || xcoord == 6 && ycoord == 0 ||
+           xcoord == 4 && ycoord == 1 || xcoord == 6 && ycoord == 1 ||
            xcoord == 6 && ycoord == 2 || xcoord == 4 && ycoord == 3 ||
-           xcoord == 6 && ycoord == 3 || xcoord == 4 && ycoord == 4){
+           xcoord == 6 && ycoord == 3 || xcoord == 4 && ycoord == 4 ||
+           xcoord == 7 && ycoord == 0 || xcoord == 7 && ycoord == 1 ||
+           xcoord == 7 && ycoord == 2 || xcoord == 7 && ycoord == 3){
             return false;
         }else {
             return true;
@@ -253,16 +255,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     public Integer GetAdventureItemBasedOnCoord(Integer xcoord, Integer ycoord){
-        if(xcoord == 5 && ycoord == 1){
+        if(xcoord == 5 && ycoord == 0){
             return 0;
         }
-        if (xcoord == 5 && ycoord == 2){
+        if (xcoord == 5 && ycoord == 1){
             return 1;
         }
         if (xcoord == 4 && ycoord == 2){
             return 2;
         }
-        if (xcoord == 5 && ycoord == 3){
+        if (xcoord == 5 && ycoord == 2){
             return 3;
         }
         if (xcoord == 5 && ycoord == 3){
@@ -273,6 +275,9 @@ public class MainActivity extends AppCompatActivity
         }
         if (xcoord == 6 && ycoord == 4){
             return 6;
+        }
+        if (xcoord == 7 && ycoord == 4){
+            return 7;
         }
         return null;
     }
