@@ -8,8 +8,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.a5_minute_adventures.MainActivity.YES_DATA;
-import static com.example.a5_minute_adventures.MainActivity.NO_DATA;
+import static com.example.a5_minute_adventures.MainActivity.PASSED_DATA;
+//import static com.example.a5_minute_adventures.MainActivity.YES_DATA;
+//import static com.example.a5_minute_adventures.MainActivity.NO_DATA;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -22,11 +23,11 @@ public class SecondActivity extends AppCompatActivity {
         choiceTextBox = findViewById(R.id.choiceTextBox);
 
         Intent intent = getIntent();
-        String testString1 = intent.getStringExtra(YES_DATA);
-        Toast toast = Toast.makeText(this, testString1, Toast.LENGTH_LONG);
+        String passedString = intent.getStringExtra(PASSED_DATA);
+        Toast toast = Toast.makeText(this, passedString, Toast.LENGTH_LONG);
         toast.show();
 
-        choiceTextBox.setText(YES_DATA);
+        choiceTextBox.setText(passedString);
 
     }
 

@@ -26,14 +26,15 @@ public class MainActivity extends AppCompatActivity
     public static final String ADVENTURE_1 = "adventure1.xml";
 
     //Constants for intent data passing
-    public static final String YES_DATA = "yes";
-    public static final String NO_DATA = "no";
+    public static final String PASSED_DATA = "passedData";
+    //public static final String YES_DATA = "yes";
+    //public static final String NO_DATA = "no";
 
     //Game Text Constants
     public static final String NO_MOVE_MESSAGE = "The nature growth does not allow you to move in that direction";
 
     //Variables to hold the current area data
-    private String yes = "test";
+    //private String yes = "";
 
     //Shared Pref variable
     private SharedPreferences savedValues;
@@ -53,8 +54,8 @@ public class MainActivity extends AppCompatActivity
     Spinner directionSpinner;
 
     //variables to hold current position of user
-    public Integer xcoord;  //Initial value for game start
-    public Integer ycoord;  //Initial value for game start
+    public Integer xcoord;
+    public Integer ycoord;
 
     String selectedItem;
 
@@ -78,10 +79,14 @@ public class MainActivity extends AppCompatActivity
         // questTextBox.setText(adventureItems.get(0).getTextBox());
 
         //Getting game start values
-        currentTextBox = adventureItems.get(0).getTextBox();
+        xcoord = 5;
+        ycoord = 1;
+
+        currentTextBox = adventureItems.get(GetAdventureItemBasedOnCoord(xcoord,ycoord)).getTextBox();
         questTextBox.setText(currentTextBox);
-        xcoord = adventureItems.get(0).getLocationIdX();
-        ycoord = adventureItems.get(0).getLocationIdY();
+
+        //xcoord = adventureItems.get(0).getLocationIdX();
+        //ycoord = adventureItems.get(0).getLocationIdY();
 
         savedValues = getSharedPreferences(SAVED_VALUES,MODE_PRIVATE);
 
@@ -112,15 +117,23 @@ public class MainActivity extends AppCompatActivity
         //create intent so data can be passed to second activity
         Intent intent = new Intent(this, SecondActivity.class);
 
+        //variable to hold the integer of the array location
+        Integer currentLocation = null;
+        String passedData = null;
+
         switch(v.getId()){
             case R.id.yesButton:
-                intent.putExtra(YES_DATA, yes);
+                currentLocation = GetAdventureItemBasedOnCoord(xcoord,ycoord);
+                passedData = adventureItems.get(currentLocation).getYes();
+                intent.putExtra(PASSED_DATA, passedData);
                 startActivity(intent);
                 break;
 
             case R.id.noButton:
-                currentTextBox = "No button pressed";
-                questTextBox.setText(currentTextBox);
+                 currentLocation = GetAdventureItemBasedOnCoord(xcoord,ycoord);
+                 passedData = adventureItems.get(currentLocation).getNo();
+                intent.putExtra(PASSED_DATA, passedData);
+                startActivity(intent);
                 break;
 
             case R.id.moveButton:
@@ -129,6 +142,8 @@ public class MainActivity extends AppCompatActivity
                         ycoord += 1;
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
+                       currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
+                       questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }else{
                         Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
                         toast.show();
@@ -139,6 +154,7 @@ public class MainActivity extends AppCompatActivity
                         ycoord -= 1;
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
+                        questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }
                     else{
                         Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
@@ -150,6 +166,7 @@ public class MainActivity extends AppCompatActivity
                         xcoord += 1;
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
+                        questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }else{
                         Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
                         toast.show();
@@ -160,6 +177,7 @@ public class MainActivity extends AppCompatActivity
                         xcoord -= 1;
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
+                        questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }else{
                         Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
                         toast.show();
@@ -191,6 +209,7 @@ public class MainActivity extends AppCompatActivity
         //do not need to implement
     }
 
+    //for use with future refactoring?
     public void UpdatePlayerPosition(Spinner directionSpinner, Integer xcoord, Integer ycoord){
 
     }
@@ -204,7 +223,6 @@ public class MainActivity extends AppCompatActivity
         if(xcoord == 4 && ycoord == 1 || xcoord == 6 && ycoord == 1 ||
            xcoord == 6 && ycoord == 2 || xcoord == 4 && ycoord == 3 ||
            xcoord == 6 && ycoord == 3 || xcoord == 4 && ycoord == 4){
-
             return false;
         }else {
             return true;
@@ -212,6 +230,27 @@ public class MainActivity extends AppCompatActivity
     }
 
     public Integer GetAdventureItemBasedOnCoord(Integer xcoord, Integer ycoord){
+        if(xcoord == 5 && ycoord == 1){
+            return 0;
+        }
+        if (xcoord == 5 && ycoord == 2){
+            return 1;
+        }
+        if (xcoord == 4 && ycoord == 2){
+            return 2;
+        }
+        if (xcoord == 5 && ycoord == 3){
+            return 3;
+        }
+        if (xcoord == 5 && ycoord == 3){
+            return 4;
+        }
+        if (xcoord == 5 && ycoord == 4){
+            return 5;
+        }
+        if (xcoord == 6 && ycoord == 4){
+            return 6;
+        }
         return null;
     }
 
