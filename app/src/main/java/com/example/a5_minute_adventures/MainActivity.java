@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity
 
     //Constants for intent data passing
     public static final String PASSED_DATA = "passedData";
-    //public static final String YES_DATA = "yes";
-    //public static final String NO_DATA = "no";
 
     //Game Text Constants
     public static final String NO_MOVE_MESSAGE = "The nature growth does not allow you to move in that direction";
@@ -84,10 +82,7 @@ public class MainActivity extends AppCompatActivity
 
         currentTextBox = adventureItems.get(GetAdventureItemBasedOnCoord(xcoord,ycoord)).getTextBox();
         questTextBox.setText(currentTextBox);
-
-        //xcoord = adventureItems.get(0).getLocationIdX();
-        //ycoord = adventureItems.get(0).getLocationIdY();
-
+        
         savedValues = getSharedPreferences(SAVED_VALUES,MODE_PRIVATE);
 
     }

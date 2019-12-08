@@ -9,8 +9,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import static com.example.a5_minute_adventures.MainActivity.PASSED_DATA;
-//import static com.example.a5_minute_adventures.MainActivity.YES_DATA;
-//import static com.example.a5_minute_adventures.MainActivity.NO_DATA;
 
 public class SecondActivity extends AppCompatActivity {
 
