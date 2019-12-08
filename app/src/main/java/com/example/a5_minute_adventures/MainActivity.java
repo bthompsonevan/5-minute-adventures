@@ -9,6 +9,8 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -16,7 +18,7 @@ import android.widget.Toast;  // Used for testing in this app.
 
 
 public class MainActivity extends AppCompatActivity
-        implements View.OnClickListener {
+        implements View.OnClickListener, OnItemSelectedListener {
 
     ArrayList<AdventureItem> adventureItems;
 
@@ -47,6 +49,12 @@ public class MainActivity extends AppCompatActivity
     Button moveButton;
     Spinner directionSpinner;
 
+    //variables to hold current position of user
+    public Integer xcoord;  //Initial value for game start
+    public Integer ycoord;  //Initial value for game start
+
+    String selectedItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,14 +66,19 @@ public class MainActivity extends AppCompatActivity
         moveButton = findViewById(R.id.moveButton);
         directionSpinner = findViewById(R.id.directionSpinner);
 
+        directionSpinner.setOnItemSelectedListener(this);
+
         Dal dal = new Dal(this);
         adventureItems = dal.parseXmlFile(ADVENTURE_1);
 
         //USE THIS FORMAT WHEN PULLING DATA OUT OF THE ARRAY LIST
         // questTextBox.setText(adventureItems.get(0).getTextBox());
 
+        //Getting game start values
         currentTextBox = adventureItems.get(0).getTextBox();
         questTextBox.setText(currentTextBox);
+        xcoord = adventureItems.get(0).getLocationIdX();
+        ycoord = adventureItems.get(0).getLocationIdY();
 
         savedValues = getSharedPreferences(SAVED_VALUES,MODE_PRIVATE);
 
@@ -108,12 +121,61 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.moveButton:
-                currentTextBox = "Move button pressed";
-                questTextBox.setText(currentTextBox);
-                break;
+
+                if (selectedItem == "North"){
+                    ycoord += 1;
+                    Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                if (selectedItem == "South") {
+                    ycoord -= 1;
+                    Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                if (selectedItem == "East") {
+                    xcoord += 1;
+                    Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                if (selectedItem == "West") {
+                    xcoord -= 1;
+                    Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
+                    toast.show();
+                }
+
+            }
         }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            switch(position){
+                case 0:
+                    selectedItem = "North";
+                    break;
+                case 1:
+                    selectedItem = "South";
+                    break;
+                case 2:
+                    selectedItem = "East";
+                    break;
+                case 3:
+                    selectedItem = "West";
+            }
 
     }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        //At this time nothing is not an option.
+        //do not need to implement
+    }
 
+    public void UpdatePlayerPosition(Spinner directionSpinner, Integer xcoord, Integer ycoord){
+
+    }
+
+    public Integer CheckValidMove(Integer xcoord, Integer ycoord){
+        return null;
+    }
 }
