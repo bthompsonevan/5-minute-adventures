@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import java.util.ArrayList;
 
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     public static final Integer REQUEST_CODE = 1;
 
     //Game Text Constants
-    public static final String NO_MOVE_MESSAGE = "The nature growth does not allow you to move in that direction";
+    public static final String NO_MOVE_MESSAGE = "You cannot move in the direction";
 
     //Variables to hold the current area data
     //private String yes = "";
@@ -174,7 +173,7 @@ public class MainActivity extends AppCompatActivity
                        currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
                        questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }else{
-                        Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(this, NO_MOVE_MESSAGE, Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }
@@ -187,7 +186,7 @@ public class MainActivity extends AppCompatActivity
                         questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }
                     else{
-                        Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(this, NO_MOVE_MESSAGE, Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }
@@ -199,7 +198,7 @@ public class MainActivity extends AppCompatActivity
                         currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
                         questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }else{
-                        Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(this, NO_MOVE_MESSAGE, Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }
@@ -211,7 +210,7 @@ public class MainActivity extends AppCompatActivity
                         currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
                         questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }else{
-                        Toast toast = Toast.makeText(this, "You cannot move in the direction", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(this, NO_MOVE_MESSAGE, Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }
