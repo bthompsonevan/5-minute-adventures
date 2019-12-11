@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity
     //Shared Pref callback constants
     public static final String SAVED_VALUES = "savedValues";
     public static final String TEXT_BOX = "textBox";
+    public static final String X_COORD = "xCoord";
+    public static final String Y_COORD = "yCoord";
 
     //variables to hold current values of the game state
     public String currentTextBox;
@@ -95,7 +97,9 @@ public class MainActivity extends AppCompatActivity
     public void onPause(){
         // Saving values to be restored
         Editor editor = savedValues.edit();
-        editor.putString(TEXT_BOX, currentTextBox);
+        editor.putString(TEXT_BOX, questTextBox.getText().toString());
+        editor.putInt(X_COORD, xcoord);
+        editor.putInt(Y_COORD, ycoord);
         editor.commit();
         super.onPause();
     }
@@ -105,11 +109,10 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
         //Getting savedValues from onPause
 
-        //This code was causing the first text box to not display
-       //currentTextBox = savedValues.getString(TEXT_BOX,"");
-
         //Putting value back into app
-        questTextBox.setText(savedValues.getString(TEXT_BOX,""));
+       questTextBox.setText(savedValues.getString(TEXT_BOX,""));
+     //   xcoord = savedValues.getInt(X_COORD, 0);
+     //   ycoord = savedValues.getInt(Y_COORD, 0);
     }
 
     @Override
