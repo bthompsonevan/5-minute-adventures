@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity
     public static final String NO_MOVE_MESSAGE = "You cannot move in the direction";
 
     //Shared Pref callback constants
-    public static final String SAVED_VALUES = "savedValues";
     public static final String TEXT_BOX = "textBox";
     public static final String X_COORD = "xCoord";
     public static final String Y_COORD = "yCoord";
@@ -192,12 +191,14 @@ public class MainActivity extends AppCompatActivity
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
                         currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
+                        
                         //Makes button visible if there is a response in the xml file
                         if (ShowButton(adventureItems.get(currentLocation).getYes())){
                             yesButton.setVisibility(View.INVISIBLE);
                         }else {
                             yesButton.setVisibility(View.VISIBLE);
                         }
+
                         if (ShowButton(adventureItems.get(currentLocation).getNo())){
                             noButton.setVisibility(View.INVISIBLE);
                         }else {
@@ -216,12 +217,14 @@ public class MainActivity extends AppCompatActivity
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
                         currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
+
                         //Makes button visible if there is a response in the xml file
                         if (ShowButton(adventureItems.get(currentLocation).getYes())){
                             yesButton.setVisibility(View.INVISIBLE);
                         }else {
                             yesButton.setVisibility(View.VISIBLE);
                         }
+
                         if (ShowButton(adventureItems.get(currentLocation).getNo())){
                             noButton.setVisibility(View.INVISIBLE);
                         }else {
@@ -238,12 +241,15 @@ public class MainActivity extends AppCompatActivity
                         xcoord -= 1;
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
-                        currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);  //Makes button visible if there is a response in the xml file
+                        currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
+
+                        //Makes button visible if there is a response in the xml file
                         if (ShowButton(adventureItems.get(currentLocation).getYes())){
                             yesButton.setVisibility(View.INVISIBLE);
                         }else {
                             yesButton.setVisibility(View.VISIBLE);
                         }
+
                         if (ShowButton(adventureItems.get(currentLocation).getNo())){
                             noButton.setVisibility(View.INVISIBLE);
                         }else {
