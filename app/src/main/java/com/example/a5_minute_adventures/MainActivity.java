@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;  // Used for testing in this app.
 
+import static com.example.a5_minute_adventures.SecondActivity.RETURN_X;
+import static com.example.a5_minute_adventures.SecondActivity.RETURN_Y;
+
 
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener, OnItemSelectedListener {
@@ -95,25 +98,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onPause(){
-        // Saving values to be restored
-    //    Editor editor = savedValues.edit();
-    //    editor.putString(TEXT_BOX, questTextBox.getText().toString());
-    //  editor.putInt(X_COORD, xcoord);
-    //    editor.putInt(Y_COORD, ycoord);
-    //    editor.commit();
+        //Implemented onSaveInstanceState
         super.onPause();
     }
 
     @Override
     public void onResume(){
         super.onResume();
-        //Getting savedValues from onPause
+        //Implemented onRestoreInstanceState
 
-        //Putting value back into app
-      //  currentTextBox = savedValues.getString(TEXT_BOX,"");
-      // questTextBox.setText(savedValues.getString(TEXT_BOX,""));
-     //  xcoord = savedValues.getInt(X_COORD, 0);
-     //  ycoord = savedValues.getInt(Y_COORD, 0);
     }
 
     @Override
@@ -152,7 +145,7 @@ public class MainActivity extends AppCompatActivity
                 intent.putExtra(PASSED_DATA, passedData);
                 intent.putExtra(PASSED_X, passedX);
                 intent.putExtra(PASSED_Y, passedY);
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_CODE);
                 break;
 
             case R.id.noButton:
@@ -161,7 +154,7 @@ public class MainActivity extends AppCompatActivity
                 intent.putExtra(PASSED_DATA, passedData);
                 intent.putExtra(PASSED_X, xcoord);
                 intent.putExtra(PASSED_Y, ycoord);
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_CODE);
                 break;
 
             case R.id.moveButton:
@@ -237,22 +230,24 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         //At this time nothing is not an option.
-        //do not need to implement
+        //do not need to implement but method must be present per abstraction
     }
 
     //Setting the coordinates from the intent return
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+       // super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
-                xcoord = data.getIntExtra(PASSED_X,0);
-                ycoord = data.getIntExtra(PASSED_Y,0);
-                Integer resetLocation =  GetAdventureItemBasedOnCoord(xcoord,ycoord);
-                questTextBox.setText(adventureItems.get(resetLocation).toString());
+                xcoord = data.getIntExtra(RETURN_X,0);
+                ycoord = data.getIntExtra(RETURN_Y,0);
+
             }
         }
+        // Resetting the game to a new state
+        Integer resetLocation =  GetAdventureItemBasedOnCoord(xcoord,ycoord);
+        questTextBox.setText(adventureItems.get(resetLocation).getTextBox());
     }
 
     //for use with future refactoring?

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Toast;  // Is used for periodic testing
 import androidx.appcompat.app.AppCompatActivity;
 import static com.example.a5_minute_adventures.MainActivity.PASSED_DATA;
 import static com.example.a5_minute_adventures.MainActivity.PASSED_X;
@@ -64,7 +64,7 @@ public class SecondActivity extends AppCompatActivity implements
         if (v.getId() == R.id.newGameButton){
             Intent returnIntent = new Intent();
             returnIntent.putExtra(RETURN_X, 5);
-            returnIntent.putExtra(RETURN_Y, 1);
+            returnIntent.putExtra(RETURN_Y, 0);
             setResult(RESULT_OK, returnIntent);
             finish();
         }
