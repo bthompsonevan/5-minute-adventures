@@ -91,16 +91,17 @@ public class MainActivity extends AppCompatActivity
         questTextBox.setText(currentTextBox);
 
         savedValues = getSharedPreferences(SAVED_VALUES,MODE_PRIVATE);
+
     }
 
     @Override
     public void onPause(){
         // Saving values to be restored
-        Editor editor = savedValues.edit();
-        editor.putString(TEXT_BOX, questTextBox.getText().toString());
-        editor.putInt(X_COORD, xcoord);
-        editor.putInt(Y_COORD, ycoord);
-        editor.commit();
+    //    Editor editor = savedValues.edit();
+    //    editor.putString(TEXT_BOX, questTextBox.getText().toString());
+    //  editor.putInt(X_COORD, xcoord);
+    //    editor.putInt(Y_COORD, ycoord);
+    //    editor.commit();
         super.onPause();
     }
 
@@ -110,9 +111,27 @@ public class MainActivity extends AppCompatActivity
         //Getting savedValues from onPause
 
         //Putting value back into app
-       questTextBox.setText(savedValues.getString(TEXT_BOX,""));
-     //   xcoord = savedValues.getInt(X_COORD, 0);
-     //   ycoord = savedValues.getInt(Y_COORD, 0);
+      //  currentTextBox = savedValues.getString(TEXT_BOX,"");
+      // questTextBox.setText(savedValues.getString(TEXT_BOX,""));
+     //  xcoord = savedValues.getInt(X_COORD, 0);
+     //  ycoord = savedValues.getInt(Y_COORD, 0);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putString(TEXT_BOX, questTextBox.getText().toString());
+        outState.putInt(X_COORD, xcoord);
+        outState.putInt(Y_COORD, ycoord);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+
+        questTextBox.setText(savedInstanceState.getString(TEXT_BOX));
+        xcoord = savedInstanceState.getInt(X_COORD);
+        ycoord = savedInstanceState.getInt(Y_COORD);
     }
 
     @Override
