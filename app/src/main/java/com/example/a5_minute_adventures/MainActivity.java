@@ -85,6 +85,18 @@ public class MainActivity extends AppCompatActivity
 
         currentTextBox = adventureItems.get(GetAdventureItemBasedOnCoord(xcoord,ycoord)).getTextBox();
         questTextBox.setText(currentTextBox);
+
+        //Makes button visible if there is a response in the xml file
+        if (ShowButton(adventureItems.get(0).getYes())){
+            yesButton.setVisibility(View.INVISIBLE);
+        }else {
+            yesButton.setVisibility(View.VISIBLE);
+        }
+        if (ShowButton(adventureItems.get(0).getNo())){
+            noButton.setVisibility(View.INVISIBLE);
+        }else {
+            noButton.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -154,7 +166,21 @@ public class MainActivity extends AppCompatActivity
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
                        currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
+
+                       //Makes button visible if there is a response in the xml file
+                       if (ShowButton(adventureItems.get(currentLocation).getYes())){
+                           yesButton.setVisibility(View.INVISIBLE);
+                       }else {
+                           yesButton.setVisibility(View.VISIBLE);
+                       }
+
+                       if (ShowButton(adventureItems.get(currentLocation).getNo())){
+                            noButton.setVisibility(View.INVISIBLE);
+                       }else {
+                            noButton.setVisibility(View.VISIBLE);
+                       }
                        questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
+
                     }else{
                         Toast toast = Toast.makeText(this, NO_MOVE_MESSAGE, Toast.LENGTH_LONG);
                         toast.show();
@@ -166,6 +192,17 @@ public class MainActivity extends AppCompatActivity
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
                         currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
+                        //Makes button visible if there is a response in the xml file
+                        if (ShowButton(adventureItems.get(currentLocation).getYes())){
+                            yesButton.setVisibility(View.INVISIBLE);
+                        }else {
+                            yesButton.setVisibility(View.VISIBLE);
+                        }
+                        if (ShowButton(adventureItems.get(currentLocation).getNo())){
+                            noButton.setVisibility(View.INVISIBLE);
+                        }else {
+                            noButton.setVisibility(View.VISIBLE);
+                        }
                         questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }
                     else{
@@ -179,6 +216,17 @@ public class MainActivity extends AppCompatActivity
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
                         currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
+                        //Makes button visible if there is a response in the xml file
+                        if (ShowButton(adventureItems.get(currentLocation).getYes())){
+                            yesButton.setVisibility(View.INVISIBLE);
+                        }else {
+                            yesButton.setVisibility(View.VISIBLE);
+                        }
+                        if (ShowButton(adventureItems.get(currentLocation).getNo())){
+                            noButton.setVisibility(View.INVISIBLE);
+                        }else {
+                            noButton.setVisibility(View.VISIBLE);
+                        }
                         questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }else{
                         Toast toast = Toast.makeText(this, NO_MOVE_MESSAGE, Toast.LENGTH_LONG);
@@ -190,7 +238,17 @@ public class MainActivity extends AppCompatActivity
                         xcoord -= 1;
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
-                        currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
+                        currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);  //Makes button visible if there is a response in the xml file
+                        if (ShowButton(adventureItems.get(currentLocation).getYes())){
+                            yesButton.setVisibility(View.INVISIBLE);
+                        }else {
+                            yesButton.setVisibility(View.VISIBLE);
+                        }
+                        if (ShowButton(adventureItems.get(currentLocation).getNo())){
+                            noButton.setVisibility(View.INVISIBLE);
+                        }else {
+                            noButton.setVisibility(View.VISIBLE);
+                        }
                         questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
                     }else{
                         Toast toast = Toast.makeText(this, NO_MOVE_MESSAGE, Toast.LENGTH_LONG);
@@ -293,7 +351,7 @@ public class MainActivity extends AppCompatActivity
 
     //Method to see if button should be shown on screen
     public boolean ShowButton(String textValue){
-        if(textValue != "0")
+        if(textValue.equals("0"))
             return true;
         else
             return false;
