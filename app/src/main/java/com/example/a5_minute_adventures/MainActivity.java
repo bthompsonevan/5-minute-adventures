@@ -37,12 +37,6 @@ public class MainActivity extends AppCompatActivity
     //Game Text Constants
     public static final String NO_MOVE_MESSAGE = "You cannot move in the direction";
 
-    //Variables to hold the current area data
-    //private String yes = "";
-
-    //Shared Pref variable
-    private SharedPreferences savedValues;
-
     //Shared Pref callback constants
     public static final String SAVED_VALUES = "savedValues";
     public static final String TEXT_BOX = "textBox";
@@ -91,9 +85,6 @@ public class MainActivity extends AppCompatActivity
 
         currentTextBox = adventureItems.get(GetAdventureItemBasedOnCoord(xcoord,ycoord)).getTextBox();
         questTextBox.setText(currentTextBox);
-
-        savedValues = getSharedPreferences(SAVED_VALUES,MODE_PRIVATE);
-
     }
 
     @Override
@@ -106,7 +97,6 @@ public class MainActivity extends AppCompatActivity
     public void onResume(){
         super.onResume();
         //Implemented onRestoreInstanceState
-
     }
 
     @Override
@@ -299,6 +289,14 @@ public class MainActivity extends AppCompatActivity
             return 7;
         }
         return null;
+    }
+
+    //Method to see if button should be shown on screen
+    public boolean ShowButton(String textValue){
+        if(textValue != "0")
+            return true;
+        else
+            return false;
     }
 
     //Use for testing values with a toast message
