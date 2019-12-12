@@ -55,11 +55,25 @@ public class SecondActivity extends AppCompatActivity implements
 
         choiceTextBox.setText(passedString);
 
-        if (passedOutcome == -1){
+        if(passedOutcome == -1){
             returnButton.setVisibility(View.INVISIBLE);
         }
-
-
+        if(passedOutcome == 1){
+            returnButton.setText("Start Game");
+            newGameButton.setVisibility(View.INVISIBLE);
+            passedYCoord +=1;
+        }
+        if(passedOutcome == 2){
+            //nothing changes at this time
+        }
+        if(passedOutcome == 3){
+            returnButton.setText("Move Ahead");
+            passedYCoord += 1;
+        }
+        if(passedOutcome == 4){
+            returnButton.setText("Leave");
+            passedXCoord += 1;
+        }
 
     }
 

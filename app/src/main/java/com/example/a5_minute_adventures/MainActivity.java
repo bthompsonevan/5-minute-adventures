@@ -301,6 +301,20 @@ public class MainActivity extends AppCompatActivity
                 xcoord = data.getIntExtra(RETURN_X,0);
                 ycoord = data.getIntExtra(RETURN_Y,0);
 
+                //Check to see if yes no boxes need to be hidden
+                Integer returnedLocation = GetAdventureItemBasedOnCoord(xcoord,ycoord);
+                if (ShowButton(adventureItems.get(returnedLocation).getYes())){
+                    yesButton.setVisibility(View.INVISIBLE);
+                }else {
+                    yesButton.setVisibility(View.VISIBLE);
+                }
+
+                if (ShowButton(adventureItems.get(returnedLocation).getNo())){
+                    noButton.setVisibility(View.INVISIBLE);
+                }else {
+                    noButton.setVisibility(View.VISIBLE);
+                }
+
             }
         }
         // Resetting the game to a new state
@@ -368,11 +382,20 @@ public class MainActivity extends AppCompatActivity
     }
 
     public Integer DetermineOutcome(String outcomeChoice){
-        if(outcomeChoice.equals("good")){
-            return 1;
-        }
         if(outcomeChoice.equals("bad")){
             return -1;
+        }
+        if(outcomeChoice.equals("intro")){
+            return 1;
+        }
+        if(outcomeChoice.equals("hole")){
+            return 2;
+        }
+        if(outcomeChoice.equals("hide")){
+            return 3;
+        }
+        if(outcomeChoice.equals("book")){
+            return 4;
         }
         return 0;
     }
