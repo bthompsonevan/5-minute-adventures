@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
                         currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
-                        
+
                         //Makes button visible if there is a response in the xml file
                         if (ShowButton(adventureItems.get(currentLocation).getYes())){
                             yesButton.setVisibility(View.INVISIBLE);
