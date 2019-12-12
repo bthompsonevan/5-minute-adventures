@@ -28,8 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
         android:layout_marginBottom="43dp"
-        android:text="@string/yesButton"
         android:onClick="onClick"
+        android:text="@string/yesButton"
         app:layout_constraintBottom_toTopOf="@+id/directionLabel"
         app:layout_constraintEnd_toStartOf="@+id/noButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
-        android:text="@string/noButton"
         android:onClick="onClick"
+        android:text="@string/noButton"
         app:layout_constraintBaseline_toBaselineOf="@+id/yesButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/yesButton" />
@@ -78,10 +78,21 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="85dp"
-        android:text="@string/moveButton"
         android:onClick="onClick"
+        android:text="@string/moveButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/directionLabel"
         app:layout_constraintTop_toBottomOf="@+id/directionSpinner" />
+
+    <Button
+        android:id="@+id/endGameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/endGameButton"
+        android:onClick="onClick"
+        app:layout_constraintStart_toStartOf="@+id/moveButton"
+        app:layout_constraintTop_toBottomOf="@+id/moveButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,9 +49,11 @@ public class MainActivity extends AppCompatActivity
 
     //variables to hold information from the widgets
     TextView questTextBox;
+    TextView directionLabel;
     Button yesButton;
     Button noButton;
     Button moveButton;
+    Button endGameButton;
     Spinner directionSpinner;
 
     //variables to hold current position of user
@@ -67,9 +69,11 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         questTextBox = findViewById(R.id.questTextBox);
+        directionLabel = findViewById(R.id.directionLabel);
         yesButton = findViewById(R.id.yesButton);
         noButton = findViewById(R.id.noButton);
         moveButton = findViewById(R.id.moveButton);
+        endGameButton = findViewById(R.id.endGameButton);
         directionSpinner = findViewById(R.id.directionSpinner);
 
         directionSpinner.setOnItemSelectedListener(this);
@@ -98,6 +102,9 @@ public class MainActivity extends AppCompatActivity
         }else {
             noButton.setVisibility(View.VISIBLE);
         }
+
+        endGameButton.setVisibility(View.INVISIBLE);
+
     }
 
     @Override
@@ -162,12 +169,25 @@ public class MainActivity extends AppCompatActivity
                 startActivityForResult(intent,REQUEST_CODE);
                 break;
 
+            case R.id.endGameButton:
+                xcoord = 5;
+                ycoord = 0;
+                currentLocation = GetAdventureItemBasedOnCoord(xcoord,ycoord);
+                questTextBox.setText(adventureItems.get(currentLocation).getTextBox());
+                moveButton.setVisibility(View.VISIBLE);
+                directionSpinner.setVisibility(View.VISIBLE);
+                directionLabel.setVisibility(View.VISIBLE);
+                endGameButton.setVisibility(View.INVISIBLE);
+                break;
+
             case R.id.moveButton:
                 if (selectedItem == "North"){
                     if(CheckValidMove(xcoord,ycoord + 1)){
                         ycoord += 1;
+                        /* used for testing game flow
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
+                        */
                        currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
 
                        //Makes button visible if there is a response in the xml file
@@ -192,8 +212,10 @@ public class MainActivity extends AppCompatActivity
                 if (selectedItem == "South") {
                     if(CheckValidMove(xcoord, ycoord - 1)){
                         ycoord -= 1;
+                        /*  Used for testing game flow
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
+                        */
                         currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
 
                         //Makes button visible if there is a response in the xml file
@@ -218,8 +240,10 @@ public class MainActivity extends AppCompatActivity
                 if (selectedItem == "East") {
                     if(CheckValidMove(xcoord +1, ycoord)){
                         xcoord += 1;
+                        /*  Used for testing game flow
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
+                        */
                         currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
 
                         //Makes button visible if there is a response in the xml file
@@ -243,8 +267,10 @@ public class MainActivity extends AppCompatActivity
                 if (selectedItem == "West") {
                     if(CheckValidMove(xcoord -1, ycoord)){
                         xcoord -= 1;
+                        /*    Used for testing game flow
                         Toast toast = Toast.makeText(this, "x= " + xcoord.toString()+ " " + "y= " + ycoord.toString(), Toast.LENGTH_LONG);
                         toast.show();
+                        */
                         currentLocation = GetAdventureItemBasedOnCoord(xcoord, ycoord);
 
                         //Makes button visible if there is a response in the xml file
@@ -313,6 +339,14 @@ public class MainActivity extends AppCompatActivity
                     noButton.setVisibility(View.INVISIBLE);
                 }else {
                     noButton.setVisibility(View.VISIBLE);
+                }
+
+                //Check for end of game
+                if(xcoord == 7 && ycoord == 4){
+                    endGameButton.setVisibility(View.VISIBLE);
+                    moveButton.setVisibility(View.INVISIBLE);
+                    directionSpinner.setVisibility(View.INVISIBLE);
+                    directionLabel.setVisibility(View.INVISIBLE);
                 }
 
             }
