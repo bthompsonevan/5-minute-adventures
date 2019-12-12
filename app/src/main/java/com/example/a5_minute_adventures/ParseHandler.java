@@ -74,9 +74,11 @@ public class ParseHandler extends DefaultHandler {
         }
         else if (qName.equals(CHOICE_YES)) {
             isChoiceYes = true;
+            return;
         }
         else if (qName.equals(CHOICE_NO)) {
             isChoiceNo = true;
+            return;
         }
     }
 
@@ -88,24 +90,24 @@ public class ParseHandler extends DefaultHandler {
         if (isTextBox) {
             item.setTextBox(valueString);
             isTextBox = false;
-        } else if (isYes) {
+        }else if (isYes) {
             item.setYes(valueString);
             isYes = false;
+        }else if (isChoiceYes) {
+            item.setChoiceYes(valueString);
+            isChoiceYes = false;
         }else if (isNo) {
             item.setNo(valueString);
             isNo = false;
+        }else if (isChoiceNo) {
+            item.setChoiceNo(valueString);
+            isChoiceNo = false;
         }else if (isLocationIdX) {
             item.setLocationIdX(Integer.parseInt(valueString));
             isLocationIdX = false;
         }else if (isLocationIdY) {
             item.setLocationIdY(Integer.parseInt(valueString));
             isLocationIdY = false;
-        }else if (isChoiceYes) {
-            item.setChoiceYes(valueString);
-            isChoiceYes = false;
-        }else if (isChoiceNo) {
-            item.setChoiceNo(valueString);
-            isChoiceNo = false;
         }
     }
 

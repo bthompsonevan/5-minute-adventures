@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity
     public static final String PASSED_DATA = "passedData";
     public static final String PASSED_X = "passedX";
     public static final String PASSED_Y = "passedY";
+    public static final String OUTCOME = "outcome";
     public static final Integer REQUEST_CODE = 1;
 
     //Game Text Constants
@@ -146,6 +148,7 @@ public class MainActivity extends AppCompatActivity
                 intent.putExtra(PASSED_DATA, passedData);
                 intent.putExtra(PASSED_X, passedX);
                 intent.putExtra(PASSED_Y, passedY);
+                intent.putExtra(OUTCOME, DetermineOutcome(adventureItems.get(currentLocation).getChoiceYes()));
                 startActivityForResult(intent,REQUEST_CODE);
                 break;
 
@@ -155,6 +158,7 @@ public class MainActivity extends AppCompatActivity
                 intent.putExtra(PASSED_DATA, passedData);
                 intent.putExtra(PASSED_X, xcoord);
                 intent.putExtra(PASSED_Y, ycoord);
+                intent.putExtra(OUTCOME, DetermineOutcome(adventureItems.get(currentLocation).getChoiceNo()));
                 startActivityForResult(intent,REQUEST_CODE);
                 break;
 
@@ -364,13 +368,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     public Integer DetermineOutcome(String outcomeChoice){
-        if(outcomeChoice == "good"){
+        if(outcomeChoice.equals("good")){
             return 1;
         }
-        if(outcomeChoice == "bad"){
-            return 0;
+        if(outcomeChoice.equals("bad")){
+            return -1;
         }
-        return null;
+        return 0;
     }
 
     //Use for testing values with a toast message

@@ -59,7 +59,7 @@ public class AdventureItem {
 
     //Getters / Setters for choiceNo
     public void setChoiceNo(String choiceNo){
-        this.choiceYes = choiceNo;
+        this.choiceNo = choiceNo;
     }
     public String getChoiceNo() { return choiceNo; }
 

@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;  // Is used for periodic testing
 import androidx.appcompat.app.AppCompatActivity;
+
+import static com.example.a5_minute_adventures.MainActivity.OUTCOME;
 import static com.example.a5_minute_adventures.MainActivity.PASSED_DATA;
 import static com.example.a5_minute_adventures.MainActivity.PASSED_X;
 import static com.example.a5_minute_adventures.MainActivity.PASSED_Y;
@@ -26,6 +28,7 @@ public class SecondActivity extends AppCompatActivity implements
     //high scope variable to access in switch statement
     public Integer passedXCoord = null;
     public Integer passedYCoord = null;
+    public Integer passedOutcome = null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +48,19 @@ public class SecondActivity extends AppCompatActivity implements
         String passedString = intent.getStringExtra(PASSED_DATA);
         passedXCoord = intent.getIntExtra(PASSED_X, 0);
         passedYCoord = intent.getIntExtra(PASSED_Y, 0);
+        passedOutcome = intent.getIntExtra(OUTCOME, 0);
 
        // Toast toast = Toast.makeText(this, passedString, Toast.LENGTH_LONG);
        // toast.show();
 
         choiceTextBox.setText(passedString);
+
+        if (passedOutcome == -1){
+            returnButton.setVisibility(View.INVISIBLE);
+        }
+
+
+
     }
 
     public void onClick(View v){

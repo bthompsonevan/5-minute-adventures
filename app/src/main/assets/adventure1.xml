@@ -12,14 +12,18 @@
     <scenario>
         <textBox>Stone ruins lay before you. The ruins seem to be a small village. Nature has taken the area back over which makes traveling difficult. You are only able to move north.</textBox>
         <yes>0</yes>
+        <choiceYes>0</choiceYes>
         <no>0</no>
+        <choiceNo>0</choiceNo>
         <locationIdX>5</locationIdX>
         <locationIdY>1</locationIdY>
     </scenario>
     <scenario>
         <textBox>You see an empty archway, to your west, that leads into what seems to be an old stone house or at least what is left of it. The path also continues North.</textBox>
         <yes>0</yes>
+        <choiceYes>0</choiceYes>
         <no>0</no>
+        <choiceNo>0</choiceNo>
         <locationIdX>5</locationIdX>
         <locationIdY>2</locationIdY>
     </scenario>
@@ -44,7 +48,9 @@
     <scenario>
         <textBox>The path rounds a corner to the east and leads into a intact building.</textBox>
         <yes>0</yes>
+        <choiceYes>0</choiceYes>
         <no>0</no>
+        <choiceNo>0</choiceNo>
         <locationIdX>5</locationIdX>
         <locationIdY>4</locationIdY>
     </scenario>
@@ -60,7 +66,9 @@
     <scenario>
         <textBox>You made it back home unscathed. No what to do with this book?  This is unfortunately a question for another day!</textBox>
         <yes>0</yes>
+        <choiceYes>0</choiceYes>
         <no>0</no>
+        <choiceNo>0</choiceNo>
         <locationIdX>7</locationIdX>
         <locationIdY>4</locationIdY>
     </scenario>
