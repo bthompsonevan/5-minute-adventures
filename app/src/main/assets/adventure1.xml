@@ -3,7 +3,9 @@
     <scenario>
         <textBox>Welcome to the Mysterious Ruins. Do you want to play?</textBox>
         <yes>Great!  Lets move along.</yes>
+        <choiceYes>good</choiceYes>
         <no>Then why did you open the app??</no>
+        <choiceNo>bad</choiceNo>
         <locationIdX>5</locationIdX>
         <locationIdY>0</locationIdY>
     </scenario>
@@ -24,14 +26,18 @@
     <scenario>
         <textBox>When you enter the archway the room is framed as a rough ten foot square. Disturbed leaves and dirt in the corner catch your eye. Do you want to investigate?</textBox>
         <yes>While investigating the ground gives way and you fall into a hole never to be found again.</yes>
+        <choiceYes>bad</choiceYes>
         <no>Head back east to the pathway.</no>
+        <choiceNo>good</choiceNo>
         <locationIdX>4</locationIdX>
         <locationIdY>2</locationIdY>
     </scenario>
     <scenario>
         <textBox>On the pathway you hear a pair of people heading towards you. They did not notice you.Do you want to hide behind some rubble?</textBox>
         <yes>Phew!  They passed.  It looks like they were a military patrol. You can still head north.</yes>
+        <choiceYes>good</choiceYes>
         <no>Uh Oh!  You were spotted and taken into custody for trespassing.</no>
+        <choiceNo>bad</choiceNo>
         <locationIdX>5</locationIdX>
         <locationIdY>3</locationIdY>
     </scenario>
@@ -45,7 +51,9 @@
     <scenario>
         <textBox>The building is dark except for small amounts of light protruding through cracks and holes around the structure. A glint of light catches your eye in the center of the room. Do you want to investigate?</textBox>
         <yes>You discover an old book that has a metal latch sealing it. There notice an exit to the East. Time to book it!</yes>
+        <choiceYes>good</choiceYes>
         <no>The guards make their way back to the room and discover you while taking too long.</no>
+        <choiceNo>bad</choiceNo>
         <locationIdX>6</locationIdX>
         <locationIdY>4</locationIdY>
     </scenario>

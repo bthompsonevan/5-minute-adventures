@@ -20,6 +20,8 @@ public class ParseHandler extends DefaultHandler {
     private final static String NO = "no";
     private final static String LOCATIONIDX = "locationIdX";
     private final static String LOCATIONIDY = "locationIdY";
+    private final static String CHOICE_YES = "choiceYes";
+    private final static String CHOICE_NO = "choiceNo";
 
     //setting up boolean variables for characters method
     private boolean isTextBox = false;
@@ -27,6 +29,8 @@ public class ParseHandler extends DefaultHandler {
     private boolean isNo = false;
     private boolean isLocationIdX = false;
     private boolean isLocationIdY = false;
+    private boolean isChoiceYes = false;
+    private boolean isChoiceNo = false;
 
 
     public ArrayList<AdventureItem> getItems(){
@@ -68,6 +72,12 @@ public class ParseHandler extends DefaultHandler {
             isLocationIdY = true;
             return;
         }
+        else if (qName.equals(CHOICE_YES)) {
+            isChoiceYes = true;
+        }
+        else if (qName.equals(CHOICE_NO)) {
+            isChoiceNo = true;
+        }
     }
 
     @Override
@@ -90,6 +100,12 @@ public class ParseHandler extends DefaultHandler {
         }else if (isLocationIdY) {
             item.setLocationIdY(Integer.parseInt(valueString));
             isLocationIdY = false;
+        }else if (isChoiceYes) {
+            item.setChoiceYes(valueString);
+            isChoiceYes = false;
+        }else if (isChoiceNo) {
+            item.setChoiceNo(valueString);
+            isChoiceNo = false;
         }
     }
 

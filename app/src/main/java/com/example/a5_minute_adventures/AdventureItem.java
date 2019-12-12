@@ -5,8 +5,11 @@ public class AdventureItem {
     private String textBox = null;
     private String yes = null;
     private String no = null;
+    private String choiceYes = null;
+    private String choiceNo = null;
     private Integer locationIdX = null;
     private Integer locationIdY = null;
+
 
     //Getters / Setters for textBox
     public void setTextBox(String textBox){
@@ -47,6 +50,18 @@ public class AdventureItem {
     public Integer getLocationIdY(){
         return locationIdY;
     }
+
+    //Getters / Setters for choiceYes
+    public void setChoiceYes(String choiceYes){
+        this.choiceYes = choiceYes;
+    }
+    public String getChoiceYes() { return choiceYes; }
+
+    //Getters / Setters for choiceNo
+    public void setChoiceNo(String choiceNo){
+        this.choiceYes = choiceNo;
+    }
+    public String getChoiceNo() { return choiceNo; }
 
 
 }

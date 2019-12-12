@@ -363,6 +363,16 @@ public class MainActivity extends AppCompatActivity
             return false;
     }
 
+    public Integer DetermineOutcome(String outcomeChoice){
+        if(outcomeChoice == "good"){
+            return 1;
+        }
+        if(outcomeChoice == "bad"){
+            return 0;
+        }
+        return null;
+    }
+
     //Use for testing values with a toast message
     public void TestToaster(String message){
         Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
